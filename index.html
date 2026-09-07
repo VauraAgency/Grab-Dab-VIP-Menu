@@ -35,9 +35,753 @@
     margin: 0 auto;
     padding: 56px 40px 80px;
   }
+
+  .topbar {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin: 0 0 56px 0;
+  }
+
+  .topbar-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .topbar-text {
+    display: flex;
+    gap: 40px;
+    animation: rotateText 12s linear infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes rotateText {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .topbar-text:hover { animation-play-state: paused; }
+
+  .topbar-text span {
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 56px;
+    animation: slideDown 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .powered-by {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .vip-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--vip-soft);
+    color: var(--vip);
+    border: 1px solid rgba(180,83,9,0.2);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 4px 9px;
+    border-radius: 999px;
+  }
+
+  h1 {
+    font-size: clamp(48px, 8vw, 72px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+
+  .tagline {
+    font-size: 15px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .logo-slot {
+    width: 72px;
+    height: 72px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+
+  .logo-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .logo-divider {
+    width: 1px;
+    height: 48px;
+    background: var(--border);
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .tier-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    animation: scaleIn 0.5s ease both;
+    cursor: pointer;
+  }
+
+  .tier-card:nth-child(1) { animation-delay: 0.05s; }
+  .tier-card:nth-child(2) { animation-delay: 0.1s; }
+  .tier-card:nth-child(3) { animation-delay: 0.15s; }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .tier-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.9);
+    border-color: rgba(14,165,233,0.3);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.08);
+  }
+
+  .tier-card.featured {
+    background: linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(14,165,233,0.1) 100%);
+    border-color: rgba(16,185,129,0.3);
+  }
+
+  .tier-num {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 16px;
+    margin: 0 auto 14px;
+  }
+
+  .tier-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+
+  .tier-qty {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .tier-price {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2px;
+  }
+
+  .tier-per {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .savings-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--green-light) 0%, rgba(16,185,129,0.1) 100%);
+    color: var(--green);
+    font-weight: 600;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(16,185,129,0.2);
+  }
+
+  .rules {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+
+  .rule {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 16px 14px;
+    font-size: 12px;
+    color: #334155;
+    line-height: 1.45;
+  }
+
+  .rule strong {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    margin-bottom: 6px;
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+    border-radius: 28px;
+    padding: 52px 40px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 48px rgba(14,165,233,0.15);
+    animation: fadeInUp 0.6s 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .cta-title {
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .cta-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-sub .keyword {
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .cta-tiers {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .cta-pill {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    font-size: 12px;
+    padding: 7px 14px;
+    border-radius: 16px;
+    font-weight: 500;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+  }
+
+  .footer-brand-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .footer-brand img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  footer {
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .calc-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .calc-modal.active { display: flex; }
+
+  .calc-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 32px;
+    padding: 48px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    animation: scaleUp 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  @keyframes scaleUp {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .calc-tier-name {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 8px;
+  }
+
+  .calc-tier-price {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+  }
+
+  .calc-per-unit {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .calc-qty-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: block;
+    font-weight: 600;
+  }
+
+  .calc-qty-input {
+    width: 100%;
+    background: var(--bg-alt);
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    text-align: center;
+    outline: none;
+  }
+
+  .calc-qty-input:focus {
+    border-color: var(--accent);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(14,165,233,0.1);
+  }
+
+  .calc-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 28px 0;
+  }
+
+  .calc-total-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .calc-total-value {
+    font-size: 56px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+
+  .calc-close-hint {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .carousel-container-header {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    background: linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 100%);
+    margin-top: 16px;
+  }
+
+  .carousel-track {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    animation: scrollHorizontal 15s linear infinite;
+  }
+
+  @keyframes scrollHorizontal {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-66.667%); }
+  }
+
+  .carousel-track:hover { animation-play-state: paused; }
+
+  .carousel-slide {
+    flex: 0 0 33.333%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @media (max-width: 900px) {
+    .rules { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 800px) {
+    header { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 32px 16px 60px; }
+    .topbar { margin: 0 0 32px 0; padding: 12px 16px; }
+    .tier-grid { grid-template-columns: 1fr; }
+    .rules { grid-template-columns: 1fr; }
+    .cta-section { padding: 40px 24px; }
+  }
 </style>
 </head>
 <body>
-  <p>placeholder will be replaced</p>
+
+  <div class="topbar">
+    <div class="topbar-content">
+      <div class="topbar-text">
+        <span>Grab & Dab • VIP clients only • Distributed by Highline</span>
+        <span>Grab & Dab • VIP clients only • Distributed by Highline</span>
+        <span>Grab & Dab • VIP clients only • Distributed by Highline</span>
+        <span>Grab & Dab • VIP clients only • Distributed by Highline</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page">
+    <header>
+      <div class="brand-block">
+        <div class="powered-by">
+          Distributed by Highline
+          <span class="vip-chip">VIP ONLY</span>
+        </div>
+        <h1>Grab & Dab</h1>
+        <p class="tagline">Private client menu · Price is per order</p>
+      </div>
+
+      <div class="header-right">
+        <div class="logo-area">
+          <div class="logo-slot">
+            <img src="https://vauraagency.github.io/Grab-Dab-Menu/grab-and-dab-logo.jpg" alt="Grab & Dab">
+          </div>
+          <div class="logo-divider"></div>
+          <div class="logo-slot">
+            <img src="https://vauraagency.github.io/Grab-Dab-Menu/highline-logo.png" alt="Highline">
+          </div>
+        </div>
+
+        <div class="carousel-container-header">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="https://vauraagency.github.io/Grab-Dab-Menu/grab-dab-blue.jpg" alt="Grab & Dab"></div>
+            <div class="carousel-slide"><img src="https://vauraagency.github.io/Grab-Dab-Menu/grab-dab-coral.jpg" alt="Grab & Dab"></div>
+            <div class="carousel-slide"><img src="https://vauraagency.github.io/Grab-Dab-Menu/grab-dab-green.webp" alt="Grab & Dab"></div>
+            <div class="carousel-slide"><img src="https://vauraagency.github.io/Grab-Dab-Menu/grab-dab-blue.jpg" alt="Grab & Dab"></div>
+            <div class="carousel-slide"><img src="https://vauraagency.github.io/Grab-Dab-Menu/grab-dab-coral.jpg" alt="Grab & Dab"></div>
+            <div class="carousel-slide"><img src="https://vauraagency.github.io/Grab-Dab-Menu/grab-dab-green.webp" alt="Grab & Dab"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="section-label">VIP Pricing</div>
+
+    <div class="tier-grid">
+      <div class="tier-card" data-index="0">
+        <div class="tier-num">1</div>
+        <div class="tier-name">Sample</div>
+        <div class="tier-qty">1 – 9 units</div>
+        <div class="tier-price">$20</div>
+        <div class="tier-per">per unit</div>
+      </div>
+
+      <div class="tier-card" data-index="1">
+        <div class="tier-num">2</div>
+        <div class="tier-name">Case</div>
+        <div class="tier-qty">10 – 99 units</div>
+        <div class="tier-price">$18</div>
+        <div class="tier-per">per unit</div>
+        <div class="savings-badge">Save $2</div>
+      </div>
+
+      <div class="tier-card featured" data-index="2">
+        <div class="tier-num">3</div>
+        <div class="tier-name">Bulk</div>
+        <div class="tier-qty">100+ units</div>
+        <div class="tier-price">$16</div>
+        <div class="tier-per">per unit</div>
+        <div class="savings-badge">Save $4</div>
+      </div>
+    </div>
+
+    <div class="rules">
+      <div class="rule"><strong>Per order</strong>Price is set by this order. Units do not stack across the month.</div>
+      <div class="rule"><strong>No split tickets</strong>One buy cannot be split into two invoices to hit a lower price.</div>
+      <div class="rule"><strong>Payment</strong>Prepaid only. Inventory is not carried on open account.</div>
+      <div class="rule"><strong>$16 floor</strong>Bulk rate requires 100 paid units in a single order.</div>
+    </div>
+
+    <div class="cta-section">
+      <div class="cta-eyebrow">VIP client scale</div>
+      <div class="cta-title">Buy more, pay less</div>
+      <div class="cta-sub">20+ flavors fueled by <span class="keyword">real</span> terps. Volume is how you earn a better rate.</div>
+      <div class="cta-tiers">
+        <div class="cta-pill">1–9 · $20</div>
+        <div class="cta-pill">10–99 · $18</div>
+        <div class="cta-pill">100+ · $16</div>
+      </div>
+    </div>
+
+    <div class="footer-brand">
+      <span class="footer-brand-label">Distributed by</span>
+      <img src="https://vauraagency.github.io/Grab-Dab-Menu/highline-logo.png" alt="Highline">
+    </div>
+
+    <footer>
+      © 2026 Grab & Dab · VIP menu · Not for public distribution
+    </footer>
+  </div>
+
+  <div class="calc-modal" id="calcModal">
+    <div class="calc-card">
+      <div class="calc-tier-name" id="modalTierName">Case</div>
+      <div class="calc-tier-price" id="modalTierPrice">$18</div>
+      <div class="calc-per-unit">per unit</div>
+      <div>
+        <label class="calc-qty-label">Quantity (units)</label>
+        <input type="number" class="calc-qty-input" id="modalQtyInput" placeholder="10" min="1" step="1">
+      </div>
+      <div class="calc-divider"></div>
+      <div>
+        <div class="calc-total-label">Your Total</div>
+        <div class="calc-total-value" id="modalTotalValue">$0</div>
+      </div>
+      <div class="calc-close-hint">Click outside to close</div>
+    </div>
+  </div>
+
+  <script>
+    const tiers = [
+      { name: 'Sample', min: 1, max: 9, price: 20, placeholder: '5' },
+      { name: 'Case', min: 10, max: 99, price: 18, placeholder: '25' },
+      { name: 'Bulk', min: 100, max: Infinity, price: 16, placeholder: '100' }
+    ];
+
+    const calcModal = document.getElementById('calcModal');
+    const qtyInput = document.getElementById('modalQtyInput');
+
+    function tierForQty(qty) {
+      if (qty >= 100) return tiers[2];
+      if (qty >= 10) return tiers[1];
+      return tiers[0];
+    }
+
+    function openCalculator(index) {
+      const tier = tiers[index];
+      document.getElementById('modalTierName').textContent = tier.name;
+      document.getElementById('modalTierPrice').textContent = '$' + tier.price;
+      qtyInput.placeholder = tier.placeholder;
+      qtyInput.value = tier.min === Infinity ? 100 : tier.min;
+      updateTotal();
+      calcModal.classList.add('active');
+      qtyInput.focus();
+      qtyInput.select();
+    }
+
+    function closeCalculator() {
+      calcModal.classList.remove('active');
+    }
+
+    function updateTotal() {
+      const qty = parseInt(qtyInput.value, 10) || 0;
+      const tier = tierForQty(qty);
+      document.getElementById('modalTierName').textContent = qty ? tier.name : '—';
+      document.getElementById('modalTierPrice').textContent = qty ? ('$' + tier.price) : '$0';
+      const total = qty * (qty ? tier.price : 0);
+      document.getElementById('modalTotalValue').textContent = '$' + total.toLocaleString('en-US');
+    }
+
+    document.querySelectorAll('.tier-card').forEach((card) => {
+      card.addEventListener('click', () => openCalculator(Number(card.dataset.index)));
+    });
+
+    calcModal.addEventListener('click', (e) => {
+      if (e.target === calcModal) closeCalculator();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCalculator();
+    });
+
+    qtyInput.addEventListener('input', updateTotal);
+  </script>
+
 </body>
 </html>
