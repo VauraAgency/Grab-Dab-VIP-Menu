@@ -139,6 +139,29 @@
     letter-spacing: 0.02em;
   }
 
+  .flavor-line {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #334155;
+    letter-spacing: 0.01em;
+  }
+
+  .flavor-line .keyword {
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .calc-hint {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
   .logo-area {
     display: flex;
     align-items: center;
@@ -289,32 +312,6 @@
     border: 1px solid rgba(16,185,129,0.2);
   }
 
-  .rules {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 48px;
-  }
-
-  .rule {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 16px 14px;
-    font-size: 12px;
-    color: #334155;
-    line-height: 1.45;
-  }
-
-  .rule strong {
-    display: block;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent-dark);
-    margin-bottom: 6px;
-  }
-
   .cta-section {
     background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
     border-radius: 28px;
@@ -370,13 +367,6 @@
     max-width: 520px;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .cta-sub .keyword {
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
   }
 
   .cta-tiers {
@@ -586,10 +576,6 @@
     object-fit: contain;
   }
 
-  @media (max-width: 900px) {
-    .rules { grid-template-columns: 1fr 1fr; }
-  }
-
   @media (max-width: 800px) {
     header { grid-template-columns: 1fr; }
   }
@@ -598,7 +584,6 @@
     .page { padding: 32px 16px 60px; }
     .topbar { margin: 0 0 32px 0; padding: 12px 16px; }
     .tier-grid { grid-template-columns: 1fr; }
-    .rules { grid-template-columns: 1fr; }
     .cta-section { padding: 40px 24px; }
   }
 </style>
@@ -625,6 +610,8 @@
         </div>
         <h1>Grab & Dab</h1>
         <p class="tagline">Private client menu · Price is per order</p>
+        <p class="flavor-line">20+ flavors fueled by <span class="keyword">real</span> terps</p>
+        <p class="calc-hint">Tap an option to calculate your total</p>
       </div>
 
       <div class="header-right">
@@ -665,14 +652,23 @@
       <div class="tier-card" data-index="1">
         <div class="tier-num">2</div>
         <div class="tier-name">Case</div>
-        <div class="tier-qty">10 – 99 units</div>
+        <div class="tier-qty">10 – 60 units</div>
         <div class="tier-price">$18</div>
         <div class="tier-per">per unit</div>
         <div class="savings-badge">Save $2</div>
       </div>
 
-      <div class="tier-card featured" data-index="2">
+      <div class="tier-card" data-index="2">
         <div class="tier-num">3</div>
+        <div class="tier-name">Volume</div>
+        <div class="tier-qty">61 – 99 units</div>
+        <div class="tier-price">$17</div>
+        <div class="tier-per">per unit</div>
+        <div class="savings-badge">Save $3</div>
+      </div>
+
+      <div class="tier-card featured" data-index="3">
+        <div class="tier-num">4</div>
         <div class="tier-name">Bulk</div>
         <div class="tier-qty">100+ units</div>
         <div class="tier-price">$16</div>
@@ -681,20 +677,13 @@
       </div>
     </div>
 
-    <div class="rules">
-      <div class="rule"><strong>Per order</strong>Price is set by this order. Units do not stack across the month.</div>
-      <div class="rule"><strong>No split tickets</strong>One buy cannot be split into two invoices to hit a lower price.</div>
-      <div class="rule"><strong>Payment</strong>Prepaid only. Inventory is not carried on open account.</div>
-      <div class="rule"><strong>$16 floor</strong>Bulk rate requires 100 paid units in a single order.</div>
-    </div>
-
     <div class="cta-section">
       <div class="cta-eyebrow">VIP client scale</div>
       <div class="cta-title">Buy more, pay less</div>
-      <div class="cta-sub">20+ flavors fueled by <span class="keyword">real</span> terps. Volume is how you earn a better rate.</div>
+      <div class="cta-sub">Volume is how you earn a better rate.</div>
       <div class="cta-tiers">
-        <div class="cta-pill">1–9 · $20</div>
-        <div class="cta-pill">10–99 · $18</div>
+        <div class="cta-pill">10–60 · $18</div>
+        <div class="cta-pill">61–99 · $17</div>
         <div class="cta-pill">100+ · $16</div>
       </div>
     </div>
@@ -730,7 +719,8 @@
   <script>
     const tiers = [
       { name: 'Sample', min: 1, max: 9, price: 20, placeholder: '5' },
-      { name: 'Case', min: 10, max: 99, price: 18, placeholder: '25' },
+      { name: 'Case', min: 10, max: 60, price: 18, placeholder: '20' },
+      { name: 'Volume', min: 61, max: 99, price: 17, placeholder: '75' },
       { name: 'Bulk', min: 100, max: Infinity, price: 16, placeholder: '100' }
     ];
 
@@ -738,7 +728,8 @@
     const qtyInput = document.getElementById('modalQtyInput');
 
     function tierForQty(qty) {
-      if (qty >= 100) return tiers[2];
+      if (qty >= 100) return tiers[3];
+      if (qty >= 61) return tiers[2];
       if (qty >= 10) return tiers[1];
       return tiers[0];
     }
